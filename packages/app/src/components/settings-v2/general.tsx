@@ -3,6 +3,7 @@ import { createMediaQuery } from "@solid-primitives/media"
 import { ButtonV2 } from "@opencode-ai/ui/v2/button-v2"
 import { SelectV2 } from "@opencode-ai/ui/v2/select-v2"
 import { Switch } from "@opencode-ai/ui/v2/switch-v2"
+import { ThinkingSlider } from "@opencode-ai/ui/thinking-slider"
 import { TextInputV2 } from "@opencode-ai/ui/v2/text-input-v2"
 import { useDialog } from "@opencode-ai/ui/context/dialog"
 import { useLanguage } from "@/context/language"
@@ -363,10 +364,10 @@ export const SettingsGeneralV2: Component<{
           title={language.t("settings.general.row.reasoningSummaries.title")}
           description={language.t("settings.general.row.reasoningSummaries.description")}
         >
-          <div data-action="settings-feed-reasoning-summaries">
-            <Switch
-              checked={settings.general.showReasoningSummaries()}
-              onChange={(checked) => settings.general.setShowReasoningSummaries(checked)}
+          <div data-action="settings-thinking-level" style={{ "min-width": "200px" }}>
+            <ThinkingSlider
+              value={settings.general.thinkingLevel()}
+              onChange={(level) => settings.general.setThinkingLevel(level)}
             />
           </div>
         </SettingsRowV2>

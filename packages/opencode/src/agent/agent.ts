@@ -14,6 +14,8 @@ import PROMPT_COMPACTION from "./prompt/compaction.txt"
 import PROMPT_EXPLORE from "./prompt/explore.txt"
 import PROMPT_SUMMARY from "./prompt/summary.txt"
 import PROMPT_TITLE from "./prompt/title.txt"
+import { PROMPT_CODE_FABLE5 } from "./prompts/code-fable5"
+import { PROMPT_DESIGN } from "./prompts/design"
 import { Permission } from "@/permission"
 import { mergeDeep, pipe, sortBy, values } from "remeda"
 import { Global } from "@opencode-ai/core/global"
@@ -214,6 +216,42 @@ const layer = Layer.effect(
             prompt: PROMPT_EXPLORE,
             options: {},
             mode: "subagent",
+            native: true,
+          },
+          code: {
+            name: "code",
+            description: "Code mode (Fable5) — Senior staff engineer with 15+ years production experience. Writes clean, efficient, production-ready code across all languages. Zero decorative comments, zero AI patterns, maximum code quality.",
+            prompt: PROMPT_CODE_FABLE5,
+            permission: Permission.merge(
+              defaults,
+              Permission.fromConfig({
+                todowrite: "allow",
+              }),
+              user,
+            ),
+            options: {
+              temperature: 0.3,
+              topP: 0.9,
+            },
+            mode: "primary",
+            native: true,
+          },
+          design: {
+            name: "design",
+            description: "Design mode — Senior UI/UX engineer. Creates stunning, production-ready interfaces with proper light/shadow, edge highlights, micro-animations, and full responsive design. Supports HTML, Vue, React, Android.",
+            prompt: PROMPT_DESIGN,
+            permission: Permission.merge(
+              defaults,
+              Permission.fromConfig({
+                todowrite: "allow",
+              }),
+              user,
+            ),
+            options: {
+              temperature: 0.4,
+              topP: 0.9,
+            },
+            mode: "primary",
             native: true,
           },
           compaction: {

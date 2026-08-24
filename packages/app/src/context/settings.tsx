@@ -30,6 +30,7 @@ export interface Settings {
     showStatus: boolean
     showTerminal: boolean
     showReasoningSummaries: boolean
+    thinkingLevel: number
     shellToolPartsExpanded: boolean
     editToolPartsExpanded: boolean
     showCustomAgents: boolean
@@ -191,6 +192,7 @@ const defaultSettings: Settings = {
     showStatus: false,
     showTerminal: false,
     showReasoningSummaries: false,
+    thinkingLevel: 2,
     shellToolPartsExpanded: false,
     editToolPartsExpanded: false,
     showCustomAgents: false,
@@ -402,6 +404,13 @@ export const { use: useSettings, provider: SettingsProvider } = createSimpleCont
         ),
         setShowReasoningSummaries(value: boolean) {
           setStore("general", "showReasoningSummaries", value)
+        },
+        thinkingLevel: withFallback(
+          () => store.general?.thinkingLevel,
+          defaultSettings.general.thinkingLevel,
+        ),
+        setThinkingLevel(value: number) {
+          setStore("general", "thinkingLevel", Math.max(0, Math.min(3, value)))
         },
         shellToolPartsExpanded: withFallback(
           () => store.general?.shellToolPartsExpanded,
