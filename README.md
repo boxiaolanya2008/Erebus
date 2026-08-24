@@ -1,4 +1,4 @@
-# Erebus 🔥
+# Erebus
 
 **Erebus** (厄瑞玻斯) — an AI coding agent forged in primordial darkness.
 
@@ -6,27 +6,33 @@ Named after the Greek primordial deity of darkness, Erebus is a standalone deskt
 
 ## Features
 
-### ⚡ GPU Acceleration (Configurable)
+### GPU Acceleration (Configurable)
 - **Hardware Acceleration**: GPU rasterization, zero-copy compositing, accelerated 2D Canvas
 - **GPU-Accelerated Rendering**: GPU compositing for model messages, thinking blocks, and Markdown
 - Toggle both independently in **Settings → General → GPU Acceleration**
 - Default: both enabled
 
-### 🌐 Multi-Language Support
+> [!NOTE]
+> Both acceleration toggles are independent. If you hit driver or compositing issues, disable one or both without losing the other.
+
+### Multi-Language Support
 - 60+ languages with automatic detection
 - GPU settings section fully internationalized
 - Language setting persists across sessions
 
-### 🚀 Performance Optimizations
+### Performance Optimizations
 - **Async window creation**: window shows immediately while the server starts in the background
 - **Lazy Sentry**: error reporting loaded on-demand, off the critical path
 - **Optimized retry**: faster recovery from transient failures (200ms base delay)
 
-### 📁 Unified APPDATA Storage
+### Unified APPDATA Storage
 - All data (database, config, logs) stored under `%APPDATA%\com.erebus.desktop\`
 - No more scattered files across `~/.local/share` and `~/.config`
 
 ## Prerequisites
+
+> [!IMPORTANT]
+> A Node toolchain is required for native modules (`@lydell/node-pty`, tree-sitter). Without it, `bun install` and the desktop build will fail.
 
 - [Bun](https://bun.sh) `1.3.14` (pinned via `packageManager`)
 - Node toolchain for native modules (`@lydell/node-pty`, tree-sitter)
@@ -44,6 +50,9 @@ bun run build:server
 # Launch in dev mode (Electron + hot reload)
 bun run dev:desktop
 ```
+
+> [!WARNING]
+> `bun install` may fail to verify SSL certificates when pulling GitHub-hosted dependencies behind a proxy or on Windows with an incomplete certificate chain. Set `NODE_TLS_REJECT_UNAUTHORIZED=0` only as a temporary workaround — see `RUNTIME_WARNINGS.md`.
 
 ## Build
 
@@ -71,6 +80,9 @@ The build scripts fetch a `models.dev` model-catalog snapshot from the network b
 - `.env` sets `MODELS_DEV_API_JSON` to a local `models-dev-api.json` placeholder
 - Replace it with a real snapshot for accurate model data
 - The CLI download in `prebuild.ts` degrades gracefully (try/catch) when offline
+
+> [!CAUTION]
+> The bundled `models-dev-api.json` is a placeholder. Shipping it as-is yields inaccurate model metadata. Supply a real snapshot before packaging for distribution.
 
 ## Project Structure
 
