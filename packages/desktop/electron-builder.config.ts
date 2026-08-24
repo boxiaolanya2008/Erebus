@@ -43,6 +43,7 @@ const APP_IDS = {
 
 const getBase = (appId: string): Configuration => ({
   artifactName: "erebus-${os}-${arch}.${ext}",
+  asar: false,
   directories: {
     output: "dist",
     buildResources: "resources",

@@ -961,6 +961,14 @@ export const dict = {
   "settings.general.row.pinchZoom.title": "Pinch to zoom",
   "settings.general.row.pinchZoom.description": "Allow trackpad pinch and Ctrl-scroll gestures to zoom",
 
+  "settings.general.section.gpu": "GPU Acceleration",
+  "settings.general.row.gpuAcceleration.title": "Hardware Acceleration",
+  "settings.general.row.gpuAcceleration.description":
+    "Enable GPU rasterization, zero-copy compositing, and accelerated 2D canvas for faster rendering",
+  "settings.general.row.gpuRendering.title": "GPU-Accelerated Rendering",
+  "settings.general.row.gpuRendering.description":
+    "Use GPU compositing for model messages, thinking blocks, and markdown rendering",
+
   "settings.general.row.wayland.title": "Use native Wayland",
   "settings.general.row.wayland.description": "Disable X11 fallback on Wayland. Requires restart.",
   "settings.general.row.wayland.tooltip":

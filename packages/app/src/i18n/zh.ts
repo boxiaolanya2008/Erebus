@@ -944,6 +944,15 @@ export const dict = {
   "settings.general.row.newInterfaceNotice.dismiss": "忽略",
   "settings.general.row.pinchZoom.title": "双指缩放",
   "settings.general.row.pinchZoom.description": "允许使用触控板双指捏合和 Ctrl+滚轮手势缩放",
+
+  "settings.general.section.gpu": "GPU 加速",
+  "settings.general.row.gpuAcceleration.title": "硬件加速",
+  "settings.general.row.gpuAcceleration.description":
+    "启用 GPU 光栅化、零拷贝合成和加速 2D Canvas，提升渲染速度",
+  "settings.general.row.gpuRendering.title": "GPU 加速渲染",
+  "settings.general.row.gpuRendering.description":
+    "使用 GPU 合成加速模型消息、思考过程和 Markdown 渲染",
+
   "settings.general.row.wayland.title": "使用原生 Wayland",
   "settings.general.row.wayland.description": "在 Wayland 上禁用 X11 回退。需要重启。",
   "settings.general.row.wayland.tooltip": "在混合刷新率显示器的 Linux 系统上，原生 Wayland 可能更稳定。",
